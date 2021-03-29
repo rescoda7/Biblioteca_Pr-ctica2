@@ -1,5 +1,5 @@
 # Biblioteca_Pràctica2
-## Trabajo realitzat per:
+## Treball realitzat per:
 
 - Ramon Escoda Semís
 - Marc Godia Calderó
