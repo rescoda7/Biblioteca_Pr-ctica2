@@ -1,0 +1,10 @@
+{% extends "Index.html" %}
+{% block content %}
+
+<h1>Veure Llibres:</h1>
+
+    <button> <a href="{% url 'llibre_disp' %}">Veure Llibres Disponibles</a> </button>
+    <button> <a href="{% url 'llibre_nodisp' %}">Veure Llibres No Disponibles </a></button>
+
+{% endblock %}
+

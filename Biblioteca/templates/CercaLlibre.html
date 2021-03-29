@@ -1,0 +1,46 @@
+{% extends "Index.html" %}
+{% block content %}
+
+
+<table border="1">
+<form method="get" action="{% url 'reserva_llibre2' %}">
+        {% csrf_token %}
+        <label> Cerca per nom de Llibres: </label>
+    <select id="cerca" name="cerca">
+        {% for prestec in busqueda_llibre %}
+        {% if prestec.llibres.disponible_fisico == True %}
+            <option value="{{ prestec.llibres.id }}">{{ prestec.llibres.nom }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+
+      <button type="submit" > Search </button>
+</form>
+    <thead>
+        <tr>
+            <th>Nom Biblioteca</th>
+            <th>Ciutat</th>
+            <th>Nom Llibre</th>
+            <th>Disponibilitat</th>
+             <th>Tematica</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for prestec in busqueda_llibre %}
+        <tr>
+
+            {% if prestec.llibres.disponible_fisico == True %}
+                <td>{{ prestec.biblioteca.nom  }}</td>
+                <td>{{ prestec.biblioteca.ciutat }}</td>
+                <td>{{ prestec.llibres.nom }}</td>
+                <td> {{ prestec.llibres.disponible_fisico }} </td>
+                <td> {{ prestec.llibres.tematica.nom }} </td>
+
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </tbody>
+ </table>
+
+{% endblock %}

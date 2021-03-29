@@ -1,0 +1,30 @@
+{% extends "Index.html" %}
+{% block content %}
+<h1>Llibres No Disponibles:</h1>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nom Biblioteca</th>
+            <th>Ciutat</th>
+            <th>Nom Llibre</th>
+            <th>Disponibilitat</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for prestec in llibre_nodisp%}
+        <tr>
+            {% if prestec.llibres.disponible_fisico == False %}
+                <td>{{ prestec.biblioteca.nom  }}</td>
+                <td>{{ prestec.biblioteca.ciutat }}</td>
+                <td>{{ prestec.llibres.nom }}</td>
+                <td> {{ prestec.llibres.disponible_fisico }} </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </tbody>
+ </table>
+
+{% endblock %}

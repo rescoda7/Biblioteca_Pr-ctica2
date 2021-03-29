@@ -1,0 +1,25 @@
+{% extends "Index.html" %}
+{% block content %}
+    <style>
+    .div1{
+        float: left;
+        margin-left: 50px;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        width: 20%;
+    }
+    </style>
+<h1>Llibres de la Biblioteca:</h1>
+ <div>
+    {% for prestec in list_prestec %}
+        <div class="div1">
+          <h3>{{ prestec.llibres.nom }}</h3>
+          <h4>Localitzacio dels llibres</h4>
+            <p>Planta: {{ prestec.numPlanta }}</p>
+            <p>Pasadís: {{ prestec.numPasillo }}</p>
+            <p>Prestatgeria: {{ prestec.numEstan }}</p>
+        </div>
+    {% endfor %}
+ </div>
+
+{% endblock %}

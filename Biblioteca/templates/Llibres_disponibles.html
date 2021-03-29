@@ -1,0 +1,54 @@
+{% extends "Index.html" %}
+{% block content %}
+<h1>Llibres Disponibles:</h1>
+<style>
+  .boton_personalizado{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .boton_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+</style>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nom Biblioteca</th>
+            <th>Ciutat</th>
+            <th>Nom Llibre</th>
+            <th>Disponibilitat</th>
+             <th>Tematica</th>
+            <th>Prestec</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for prestec in llibre_disp%}
+        <tr>
+            {% if prestec.llibres.disponible_fisico == True %}
+                <td>{{ prestec.biblioteca.nom  }}</td>
+                <td>{{ prestec.biblioteca.ciutat }}</td>
+                <td>{{ prestec.llibres.nom }}</td>
+                <td> {{ prestec.llibres.disponible_fisico }} </td>
+                <td> {{ prestec.llibres.tematica.nom }} </td>
+                <td> <form method="get" action="{% url 'realitzar_prest' %}">
+                    <button class="boton_personalizado" type="submit">
+                        <input  name="reserva" value="{{prestec.llibres.id}}" style="display: none"/>
+                        Cerca llibre prestec </button>
+                    </form>
+                </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </tbody>
+ </table>
+
+{% endblock %}

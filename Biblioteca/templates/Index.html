@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Biblioteca by MyRecommentdations.org{% endblock %}</title>
+</head>
+<body>
+<div id="header">
+    {% block header %}
+    {% endblock %}
+</div>
+<div id="sidebar">
+    {% block sidebar %}
+        <ul>
+            <li><a href="{% url 'list_prestec' %}">Inici</a></li>
+            <li><a href="{% url 'reserva_llibre' %}">Cercar llibres disponibles/no</a></li>
+            <li><a href="{% url 'busqueda_llibre' %}"> Cercar llibres </a></li>
+        </ul>{% endblock %}
+</div>
+<div id="content">
+    {% block content %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% endblock %}
+</div>
+<div id="footer">{% block footer %}{% endblock %}</div>
+</body>
+</html>

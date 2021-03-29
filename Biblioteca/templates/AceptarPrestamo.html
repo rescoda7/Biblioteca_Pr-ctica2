@@ -1,0 +1,17 @@
+{% extends "Index.html" %}
+{% block content %}
+
+<h1>Llibres de la Biblioteca:</h1>
+ <div>
+    {% for prestec in realitzar_view %}
+        <div>
+          <h3>{{ prestec.llibres.nom }}</h3>
+          <h4>Localitzacio dels llibres</h4>
+            <p>Planta: {{ prestec.numPlanta }}</p>
+            <p>Pasadís: {{ prestec.numPasillo }}</p>
+            <p>Prestatgeria: {{ prestec.numEstan }}</p>
+        </div>
+    {% endfor %}
+ </div>
+
+{% endblock %}
